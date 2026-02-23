@@ -1,0 +1,25 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		int[] arr = new int[]{3,7,7,8,9,12};
+		int target = 7;
+		int ans=-1; //element not present case
+		
+		int l=0;
+		int h=arr.length-1;
+		while(l<=h) {
+		    int mid = l+(h-l) /2;
+		    
+		    if(arr[mid]==target) {
+		        ans = mid;
+		        h=mid-1; //move left after finding the target
+		    } else if(arr[mid]<target) {
+		        l = mid+1;
+		    }else {
+		        h = mid-1;
+		    }
+		}
+		System.out.println("The first occurrence of the target: "+ans);
+	}
+}
