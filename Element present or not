@@ -16,7 +16,7 @@ public class Main
 		if(list.contains(key)) {
 		    System.out.println("Found at index:"+ list.indexOf(key));
 		} else {
-		    System.out.println("not found");
+		    System.out.println("-1");
 		}
 	}
 }
