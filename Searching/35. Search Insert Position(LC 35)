@@ -1,0 +1,17 @@
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int l=0,h= nums.length-1;
+
+        while(l<=h) {
+            int mid = l+(h-l)/2;
+            if(nums[mid]==target) {
+                return mid; //target element already present
+            }else if(nums[mid]>target) {
+                h = mid -1; //mid value is more than target means should move to left side 
+            } else {
+                l = mid +1;  //mid value is less than target means we should mov eto the right side
+            }
+        }
+        return l;
+    }
+}
