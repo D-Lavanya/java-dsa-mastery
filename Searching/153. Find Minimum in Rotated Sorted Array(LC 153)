@@ -9,3 +9,25 @@ class Solution {
         return min;
     }
 }
+
+
+----
+//another approach using binary search
+
+class Solution {
+    public int findMin(int[] nums) {
+        int l=0,h = nums.length-1;
+        int min=0;
+        while(l < h) {
+            int mid = l + (h - l) /2;
+
+            if(nums[mid]>nums[h]) {
+                l = mid+1; //if mid value is more than h then the min value presents at h  side so should move the low to mid+1
+            } else {
+                h = mid; // if mid value is less then we should move the h to left side so h = mid
+            }
+        }
+        min = nums[l];
+        return min;
+    }
+}
