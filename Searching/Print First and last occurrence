@@ -1,0 +1,50 @@
+import java.util.*;
+
+public class Main
+{
+	public static void main(String[] args) {
+		int[] arr = {3,5,5,7,7,7,7,8,10};
+		int target = 7;
+		
+		int first = firstOccurrence(arr,target);
+		int last = lastOccurrence(arr,target);
+		
+		System.out.println("firstOccurrence: "+first+" lastOccurrence: "+last);
+	}	
+		
+	private	static int firstOccurrence(int[] arr,int target) {
+		    int l=0,h=arr.length-1;
+		    int ans =-1;
+		    
+		    while(l<=h) {
+		        int mid = l+(h-l)/2;
+    		    if(arr[mid]==target) {
+    		       ans = mid;
+    		       h =mid-1; //move left
+    		    }else if(arr[mid]<target) {
+    		        l = mid+1;
+    		    }else {
+    		        h = mid-1;
+    		    }
+		    }
+		    return ans;
+		}
+		
+	private static int lastOccurrence(int[] arr,int target) {
+		    int l=0,h=arr.length-1;
+		    int ans =-1;
+		    
+		    while(l<=h) {
+		        int mid = l+(h-l)/2;
+    		    if(arr[mid]==target) {
+    		       ans = mid;
+    		       l =mid+1; //move right
+    		    }else if(arr[mid]<target) {
+    		        l = mid+1;
+    		    }else {
+    		        h = mid-1;
+    		    }
+		    }
+		    return ans;
+		}
+}
