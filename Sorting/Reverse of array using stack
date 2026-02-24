@@ -1,0 +1,19 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		int[] arr = {1,2,3,4,5,6};
+		Stack<Integer> st = new Stack<>();
+		
+		for(int n:arr) {
+		    st.push(n);
+		}
+		System.out.println(Arrays.toString(arr));     //before reverse
+		
+		for(int i=0;i<arr.length;i++) {
+		    arr[i] = st.pop();        //updating from start by poping
+		}
+		
+		System.out.println(Arrays.toString(arr)); 
+	}
+}
