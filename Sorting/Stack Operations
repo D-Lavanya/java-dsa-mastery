@@ -33,3 +33,18 @@ public class Main
 		System.out.println(st);
 	}
 }
+
+
+
+-------------------------------
+
+
+Output:
+
+[10, 20, 30, 40, 50]
+pop: 50
+peek: 40
+Size: 4
+empty: false
+Search: 3
+[]
