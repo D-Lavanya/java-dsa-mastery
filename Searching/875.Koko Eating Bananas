@@ -1,0 +1,77 @@
+class Solution {
+// Calculates total hours required if Koko eats at speed = mid
+    public static long eatHours(int[] piles,int mid) {
+        long res =0;     // use long to avoid overflow
+                          // Ceiling of (p / mid)
+                          // Formula: (p + mid - 1) / mid
+        for(int p:piles) {
+            res+= (long)(p+mid-1)/mid;
+        }
+        return res;
+    }
+    public int minEatingSpeed(int[] piles, int h) {
+
+        int low = 1;   // Minimum possible eating speed
+        int high = 0;  // Will store maximum pile size
+
+        // Find maximum pile (upper bound for binary search)
+        for (int p : piles) {
+            high = Math.max(high, p);
+        }
+
+        // Binary Search on Answer
+        // We are searching for minimum k such that
+        // total hours <= h
+        while (low <= high) {
+
+            int mid = low + (high - low) / 2;  // Avoid overflow
+
+            // If Koko can finish within h hours
+            if (eatHours(piles, mid) <= h) {
+                // Try smaller speed (we want minimum k)
+                high = mid - 1;
+            } else {
+                // Too slow → increase speed
+                low = mid + 1;
+            }
+        }
+
+        // low will be the minimum valid speed
+        return low;
+
+    }
+}
+
+
+
+------ without comments
+
+class Solution {
+    public static long eatHours(int[] piles,int mid) {
+        long res =0;
+        for(int p:piles) {
+            res+= (long)(p+mid-1)/mid;
+        }
+        return res;
+    }
+    public int minEatingSpeed(int[] piles, int h) {
+        int low=1;
+        int high = 0;
+
+        for(int p:piles) {
+            high = Math.max(high,p);
+        }
+
+        while(low<=high) {
+            int mid = low+(high-low)/2;
+            
+
+            if(eatHours(piles,mid) <= h) {
+                high =mid-1;
+            }else {
+                low = mid+1;
+            }
+        }
+        return low;
+    }
+}
