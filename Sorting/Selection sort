@@ -9,10 +9,10 @@ public class Main
 		    int min_idx =i;
 		    for(int j=i+1; j<n; j++) {
 		            if(a[j]<a[min_idx]) {
-		                min_idx=j;
+		                min_idx=j;          //finding the min idx from j to end
 		            }
 		        }
-		        int temp = a[min_idx];
+		        int temp = a[min_idx];  //swap the found new minidx with old as it is in ith position mor idx
 		        a[min_idx] = a[i];
 		        a[i] = temp;
 		    }
