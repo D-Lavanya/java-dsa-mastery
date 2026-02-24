@@ -18,3 +18,24 @@ public class Main
 ----------------------------------
 Output:
 [1,2,3,4,3]
+
+------------------or
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+        int[] arr = new int[]{1,1,1,2,2,3,4,3};
+        Stack<Integer> st = new Stack<>();
+
+        for(int num:arr) {
+            if(st.peek()!=arr[i] || st.empty(){
+                st.push(num);
+            }
+        }
+		for(int n:st) {
+			System.out.println(n+ " ");
+		}
+
+	}
+}
+
