@@ -1,0 +1,41 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        
+        Stack<Character> stack = new Stack<>();
+        int errorIndex = -1;
+
+        for(int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+
+            // Push expected closing bracket
+            if(ch == '{') {
+                stack.push('}');
+            }
+            else if(ch == '[') {
+                stack.push(']');
+            }
+            else if(ch == '(') {
+                stack.push(')');
+            }
+            else {
+                // If stack empty OR mismatch
+                if(stack.isEmpty() || stack.pop() != ch) {
+                    errorIndex = i + 1;  // 1-based index
+                    break;
+                }
+            }
+        }
+
+        // If no mismatch but still stack not empty
+        if(errorIndex == -1 && !stack.isEmpty()) {
+            errorIndex = stack.peek() + 1;
+        }
+
+        System.out.println(errorIndex);
+    }
+}
