@@ -1,0 +1,53 @@
+import java.util.*;
+
+class Node {
+    int data;
+    Node next;
+        
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class Linkedlist {
+    Node head;
+        
+    void insertAtBegin (int data) {
+        Node newnode = new Node(data);
+        if(head == null) {
+            head = newnode;
+            return;
+        } else {
+            newnode.next = head;
+            head = newnode;
+        }
+	}
+	void display() {
+        Node temp = head;
+        while(temp != null) {
+            System.out.print(temp.data + "->");
+            temp = temp.next;
+        }
+        System.out.println("null");
+    }
+}
+
+public class Main
+{
+	public static void main(String[] args) {
+		Linkedlist obj = new Linkedlist();
+		
+		obj.insertAtBegin(10);
+		obj.insertAtBegin(20);
+		obj.insertAtBegin(30);
+		obj.insertAtBegin(40);
+		
+		obj.display();
+		
+	}
+}
+
+
+Output:
+40->30->20->10->null
