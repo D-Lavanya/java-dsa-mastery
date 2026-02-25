@@ -1,0 +1,26 @@
+class Solution {
+    public String removeStars(String s) {
+        Stack<Character> st = new Stack<>();
+
+        for(int i=0; i<s.length(); i++) {
+            char ch = s.charAt(i);
+
+//char not * then push
+            if(ch!='*') {  
+                st.push(ch);
+            } else if(!st.isEmpty()) {   //pop only when stack is not empty
+                    st.pop();
+                }
+            }
+        }
+
+        //take character array instead of string because it takes more time
+        int n= st.size();
+        char[] arr = new char[n];
+        for(int i = n-1; i >= 0; i--) {
+            arr[i] = st.pop();
+        }
+
+        return new String(arr);
+    }
+}
