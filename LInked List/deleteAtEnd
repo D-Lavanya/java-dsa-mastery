@@ -1,0 +1,105 @@
+import java.util.*;
+
+class Node {
+    int data;
+    Node next;
+        
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class Linkedlist {
+    Node head;
+    
+    void insertAtBegin (int data) {
+        Node newnode = new Node(data);
+        if(head == null) {
+            head = newnode;
+            return;
+        } else {
+            newnode.next = head;
+            head = newnode;
+        }
+	}  
+	
+    void insertAtEnd (int data) {
+        Node newnode = new Node(data);
+        if(head == null) {
+            head = newnode;
+            return;
+        } else {
+            Node temp = head;
+            while( temp.next != null) {
+                temp = temp.next;
+            }
+            temp.next = newnode;
+        }
+	}
+	
+	void display() {
+        Node temp = head;
+        while(temp != null) {
+            System.out.print(temp.data + "->");
+            temp = temp.next;
+        }
+        System.out.println("null");
+    }
+    
+    void deleteAtBegin() {
+        if(head==null) {
+            System.out.println("Linkedlist is Empty");
+            return;
+        }else {
+            head = head.next;
+        }
+    }
+    
+    void deleteAtEnd () {
+        if(head==null) {
+            System.out.println("Linkedlist is Empty");
+            return;
+        }else {
+            Node temp = head;
+            while(temp.next.next != null) {
+                temp = temp.next;
+            }
+            temp.next = null;
+        }
+    }
+    
+}
+
+public class Main
+{
+	public static void main(String[] args) {
+		Linkedlist obj = new Linkedlist();
+		
+		obj.insertAtEnd(10);
+		obj.insertAtEnd(20);
+		obj.insertAtEnd(30);
+		obj.insertAtEnd(40);
+        obj.display();
+        
+		obj.insertAtBegin(2);
+		obj.insertAtBegin(4);
+		obj.insertAtBegin(7);
+		obj.insertAtBegin(9);
+		obj.display();	
+		
+		obj.deleteAtBegin();
+		obj.display();
+		
+		obj.deleteAtEnd();
+		obj.display();
+		
+	}
+} 
+
+
+Output:
+10->20->30->40->null
+9->7->4->2->10->20->30->40->null
+7->4->2->10->20->30->40->null
+7->4->2->10->20->30->null
