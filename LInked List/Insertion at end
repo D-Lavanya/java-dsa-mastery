@@ -14,7 +14,7 @@ import java.util.*;
     class Linkedlist {
         Node head;
         
-        void insert (int data) {
+        void insertAtEnd (int data) {
             Node newnode = new Node(data);
             if(head == null) {
                 head = newnode;
@@ -43,10 +43,10 @@ public class Main
 	public static void main(String[] args) {
 		Linkedlist obj = new Linkedlist();
 		
-		obj.insert(10);
-		obj.insert(20);
-		obj.insert(30);
-		obj.insert(40);
+		obj.insertAtEnd(10);
+		obj.insertAtEnd(20);
+		obj.insertAtEnd(30);
+		obj.insertAtEnd(40);
 		
 		obj.display();
 		
