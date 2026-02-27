@@ -4,3 +4,23 @@ class Solution {
         return 1+ countNodes(root.left) + countNodes(root.right);
     }
 }
+
+
+_______________________________________________________________________
+
+Another method:
+
+
+class Solution {
+    int count =0;
+    public void func(TreeNode root) {
+        if(root == null) return;
+        count++;
+        func(root.left);
+        func(root.right);
+    }
+    public int countNodes(TreeNode root) {
+        func(root);
+        return count;
+    }
+}
