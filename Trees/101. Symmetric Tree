@@ -1,3 +1,5 @@
+//when root is given as input
+
 class Solution {
     public boolean isSymmetric(TreeNode root) {
         if (root == null) return true;
@@ -12,5 +14,62 @@ class Solution {
         
         return isMirror(p.left, q.right) &&
                isMirror(p.right, q.left);
+    }
+}
+
+
+
+----------------------------------------
+//when root as n and elements as array 
+
+Method 1: 
+
+class Solution {
+    public int isSymmetric (int n,int[] arr){
+        if(n==0) 
+            return 1;
+        return isM(arr,0,0,n)?1:0;
+    }
+
+    private boolean isM(int[] arr,int i,int j,int n){
+        if(i>=n && j>=n)    return true;
+        if(i>=n || j>=n)    return false;
+        if(arr[i]!= arr[j]) return false;
+
+        return isM(arr,2*i+1,2*j+2,n) && 
+               isM(arr,2*i+2,2*j+1,n);
+    }
+}
+
+Method 2:
+
+class Solution {
+    
+    public int isSymmetric(int n, int[] arr) {
+        if (n == 0) return 1;
+        
+        return isMirror(arr, 1, 2, n) ? 1 : 0;
+    }
+    
+    private boolean isMirror(int[] arr, int i, int j, int n) {
+        
+        // If both indices are out of bounds
+        if (i >= n && j >= n) return true;
+        
+        // If one is out of bounds
+        if (i >= n || j >= n) return false;
+        
+        // If both are null (-1)
+        if (arr[i] == -1 && arr[j] == -1) return true;
+        
+        // If one is null
+        if (arr[i] == -1 || arr[j] == -1) return false;
+        
+        // If values not equal
+        if (arr[i] != arr[j]) return false;
+        
+        // Check mirror children
+        return isMirror(arr, 2*i + 1, 2*j + 2, n) &&
+               isMirror(arr, 2*i + 2, 2*j + 1, n);
     }
 }
