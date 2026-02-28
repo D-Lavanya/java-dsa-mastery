@@ -1,0 +1,52 @@
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		int[][] ed = {{0,1},{0,2},{0,3},{1,3},{2,3},{2,4},{3,4}};
+		List<List<Integer>> adj = new ArrayList<>();
+		for(int i=0;i<5;i++) {
+		    adj.add(new ArrayList<>());
+		}
+		for(int[] edge:ed) {
+		    int u = edge[0];
+		    int v = edge[1];
+		    adj.get(u).add(v);
+		    adj.get(v).add(u);
+		}
+		System.out.println(adj);
+		
+		System.out.println();
+		System.out.println();
+		
+		for(int i = 0; i < 5; i++){
+            System.out.println(i + " -> " + adj.get(i));
+        }
+        
+        System.out.println("All paths from 0-4:");
+        int source = 0;
+        int des = 4;
+        boolean[] vistied = new boolean[5];
+        List<Integer> path = new ArrayList<Integer>();
+        allPaths(source,des,adj,vistied,path);
+	}
+	
+	static void allPaths(int node, int des, List<List<Integer>> adj, boolean[] vistied, List<Integer> path) {
+	    vistied[node] = true;
+	    path.add(node);
+	    
+	    if(node == des) {
+	        System.out.println(path);
+	    }else {
+	        for(int neighbor :adj.get(node)){
+	            if(!vistied[neighbor]) {
+	                allPaths(neighbor, des, adj, vistied, path);
+	            }
+	        }
+	    }
+	    
+	    //Backtracking
+	    path.remove(path.size()-1);
+	    vistied[node] = false;
+	}
+}
