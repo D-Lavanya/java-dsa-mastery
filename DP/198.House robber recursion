@@ -1,0 +1,16 @@
+//198.House robber recursion
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		int[] nums = {2,7,9,3,1};
+		System.out.println(solve(nums,0));
+	}
+	static int solve(int[] nums,int i){
+	    if(i >= nums.length)    return 0;
+	    int rob = nums[i] + solve(nums, i+2);
+	    int skip = solve(nums, i+1);
+	    return Math.max(rob, skip);
+	}
+	
+}
