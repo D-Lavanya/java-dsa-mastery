@@ -1,0 +1,44 @@
+//198.House robber memoization
+//normal compiler
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		int[] nums = {2,7,9,3,1};
+		int[] dp = new int[nums.length];
+		Arrays.fill(dp,-1);
+		System.out.println(solve(nums,0,dp));
+	}
+	static int solve(int[] nums,int i,int[] dp){
+	    if(i >= nums.length)    return 0;
+	    if(dp[i] != -1) {
+	        return dp[i];
+	    }
+	    int rob = nums[i] + solve(nums, i+2, dp);
+	    int skip = solve(nums, i+1, dp);
+	    dp[i] = Math.max(rob, skip);
+	    return dp[i];
+	}	
+}
+
+Output: 12
+
+
+//leetcode
+class Solution {
+    public int rob(int[] nums) {
+        int[] dp = new int[nums.length];
+		    Arrays.fill(dp,-1);
+        return solve(nums,0,dp);
+    }
+    static int solve(int[] nums,int i,int[] dp){
+        if(i >= nums.length)    return 0;
+        int rob = nums[i] + solve(nums, i+2,dp);
+        int skip = solve(nums, i+1,dp);
+        dp[i] = Math.max(rob,skip);
+        return dp[i];
+    }
+}
+
+OUTPUT:
+TLE
