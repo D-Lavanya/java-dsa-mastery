@@ -1,0 +1,28 @@
+//fibnocci memoization
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		int num =6;
+		int[] dp = new int[num+1];
+		System.out.println(fib(num,dp));
+		System.out.println(Arrays.toString(dp));
+		
+	}
+	static int fib(int n,int[] dp){
+	    if(n==0)    return 0;
+	    if(n==1)    return 1;
+	    if( dp[n] != 0) {
+	        return dp[n];
+	    }
+	    dp[n] = fib(n-1, dp) + fib(n-2, dp);
+	    return dp[n];
+	}
+}
+
+
+
+_________________________________
+Output:
+8
+[0, 0, 1, 2, 3, 5, 8]
